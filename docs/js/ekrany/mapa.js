@@ -82,7 +82,7 @@ export function ekranMapy() {
       kafel({ href: '#/powtorka', ikona: '🧠', tytul: 'Powtórka', opis: 'Fiszki, pytania otwarte z kluczem, trening powiększeń, ściąga.', klasa: 'kafel--powtorka' }),
       kafel({ href: '#/profil', ikona: '🏅', tytul: 'Profil i odznaki', opis: `${Object.keys(stan.odznaki).length} odznak · mocne i słabe strony.`, klasa: 'kafel--profil' }),
     ]),
-    h('p', { class: 'stopka', tekst: 'Zadania ułożone na podstawie treści działu I podręcznika „Puls życia 5” (Nowa Era, podstawa programowa 2024). Pytania i rysunki są własne.' }),
+    h('p', { class: 'stopka', tekst: 'Zadania obejmują dział I biologii dla klasy 5 (podstawa programowa 2024). Pytania i rysunki są własne.' }),
     notaNiezaleznosci(),
   ]);
 }

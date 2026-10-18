@@ -1,5 +1,5 @@
 // Bank zadań działu I. Wszystkie treści napisane od nowa na podstawie zakresu tematów
-// podręcznika Puls życia 5 i podstawy programowej 2024 (wymagania I.1, I.2, I.6 oraz II i III ogólne).
+// działu I biologii dla klasy 5 i podstawy programowej 2024 (wymagania I.1, I.2, I.6 oraz II i III ogólne).
 // Pola wspólne: id, temat (1-3), typ, tresc, wyjasnienie, umiejetnosc (klucz do raportu słabych punktów).
 // Typy:
 //   wybor      opcje[], poprawna (indeks)

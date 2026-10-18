@@ -99,6 +99,8 @@ with sync_playwright() as p:
     page.wait_for_timeout(600)
     page.screenshot(path=str(ZRZUTY / '01-baza.png'), full_page=True)
     assert page.locator('.ekran--mapa .nota-niezaleznosci, .nota-niezaleznosci').first.inner_text().strip() == NOTA, 'nota na mapie'
+    assert page.locator('.stopka').inner_text().strip() == 'Zadania obejmują dział I biologii dla klasy 5 (podstawa programowa 2024). Pytania i rysunki są własne.', 'stopka mapy'
+    assert not re.search(r'Nowa Era|Puls życia', page.locator('body').inner_text()), 'brak nazwy wydawnictwa/podręcznika'
 
     # świat 2 zablokowany na starcie
     assert page.locator('.swiat-karta--2.swiat-karta--zablokowana').count() == 1

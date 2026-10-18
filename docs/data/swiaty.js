@@ -1,4 +1,4 @@
-// Trzy światy = trzy tematy działu I „Biologia – nauka o życiu” (Puls życia 5, podstawa programowa 2024).
+// Trzy światy = trzy tematy działu I „Biologia – nauka o życiu” (klasa 5, podstawa programowa 2024).
 // Każdy świat: misje (lista id zadań z data/zadania.js) i boss (pule wariantów, z każdej losowany jeden).
 // Kolejny świat otwiera pokonanie bossa poprzedniego (panel rodzica może odblokować wszystkie).
 

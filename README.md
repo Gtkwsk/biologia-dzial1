@@ -2,8 +2,8 @@
 
 > Niezależna pomoc do nauki zgodna z podstawą programową biologii dla klasy 5 (2024). Nie jest produktem ani materiałem wydawnictwa.
 
-Gra do nauki i powtórki przed sprawdzianem z biologii (klasa 5, podręcznik „Puls życia 5”, Nowa Era,
-edycja zgodna z podstawą programową 2024). Obejmuje dział I „Biologia – nauka o życiu”:
+Gra do nauki i powtórki przed sprawdzianem z biologii (klasa 5, zgodnie z podstawą programową 2024).
+Obejmuje dział I „Biologia – nauka o życiu”:
 
 1. Biologia jako nauka (cechy i czynności życiowe organizmów, poziomy budowy, dziedziny biologii)
 2. Jak poznawać biologię? (obserwacja i doświadczenie, próba badawcza i kontrolna, metoda naukowa, badacz i źródła wiedzy)

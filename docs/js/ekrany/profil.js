@@ -128,7 +128,7 @@ export function ekranRodzica() {
       ]),
       h('div', { class: 'karta' }, [
         h('h2', { class: 'karta__tytul', tekst: 'O aplikacji' }),
-        h('p', { tekst: `Dział I „Biologia – nauka o życiu” (klasa 5, podręcznik „Puls życia 5”, Nowa Era, podstawa programowa 2024): tematy 1–3. ${ZADANIA.length} zadań w misjach i u bossów, próbny sprawdzian, fiszki, pytania otwarte i trening powiększeń.` }),
+        h('p', { tekst: `Dział I „Biologia – nauka o życiu” (klasa 5, podstawa programowa 2024): tematy 1–3. ${ZADANIA.length} zadań w misjach i u bossów, próbny sprawdzian, fiszki, pytania otwarte i trening powiększeń.` }),
         h('p', { tekst: 'Treść zadań i rysunki są własne; aplikacja nie zawiera tekstów ani ilustracji z podręcznika. Działa offline, postępy zapisuje tylko w tej przeglądarce.' }),
         h('p', { tekst: 'Mechanika gry wzorowana na „Wyprawie do wnętrza życia” (biologia-gra.netlify.app).' }),
         h('p', { class: 'wersja', tekst: `Wersja ${WERSJA}` }),
