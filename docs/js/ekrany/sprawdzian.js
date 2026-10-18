@@ -80,7 +80,7 @@ export function ekranSprawdzianu() {
               h('h2', { class: 'karta__tytul', tekst: '🎯 Do powtórki przed sprawdzianem' }),
               h('ul', { class: 'raport__lista' }, misjeDoPowtorki.map((m) => h('li', {}, [h('a', { href: `#/swiat/${m.swiat}/misja/${m.id}`, class: 'link', tekst: `Świat ${m.swiat}: ${nazwaMisji(m)}` })]))),
             ])
-          : h('div', { class: 'karta raport' }, [h('h2', { class: 'karta__tytul', tekst: '🏆 Komplet punktów! Jesteś gotowy.' })]),
+          : h('div', { class: 'karta raport' }, [h('h2', { class: 'karta__tytul', tekst: '🏆 Komplet punktów! Ze sprawdzianem nie będzie problemu.' })]),
         h('h2', { class: 'sekcja__tytul', tekst: 'Zadanie po zadaniu' }),
         h(
           'ol',

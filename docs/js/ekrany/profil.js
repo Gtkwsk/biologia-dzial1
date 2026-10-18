@@ -3,7 +3,8 @@
 import { h } from '../core/dom.js';
 import { NAZWY_UMIEJETNOSCI, ocenaSzkolna, PROGI, RANGI, raportUmiejetnosci } from '../core/gra.js';
 import { nowyStan } from '../core/stan.js';
-import { K, infoGracza, misjaUmiejetnosci, odswiezHud, ustawDzwiek, zapisz } from '../kontekst.js';
+import { formularzImienia } from './imie.js';
+import { K, imieGracza, infoGracza, misjaUmiejetnosci, odswiezHud, ustawDzwiek, zapisz } from '../kontekst.js';
 import ODZNAKI from '../../data/odznaki.js';
 import SWIATY from '../../data/swiaty.js';
 import ZADANIA from '../../data/zadania.js';
@@ -23,7 +24,7 @@ export function ekranProfilu() {
   const raport = raportUmiejetnosci(stan);
   const znane = new Map(raport.map((r) => [r.klucz, r]));
   return h('section', { class: 'ekran ekran--profil' }, [
-    naglowek('Profil gracza', { nadtytul: 'Mikołaj' }),
+    naglowek('Profil gracza', { nadtytul: imieGracza() }),
     h('div', { class: 'karta profil-poziom' }, [
       h('div', { class: 'profil-poziom__odznaka', tekst: String(g.poziom) }),
       h('div', { class: 'profil-poziom__teksty' }, [
@@ -67,6 +68,8 @@ export function ekranProfilu() {
         ]);
       }),
     ),
+    h('h2', { class: 'sekcja__tytul', tekst: 'Imię gracza' }),
+    h('div', { class: 'karta' }, [formularzImienia({ przycisk: 'Zapisz imię', poZapisie: () => dispatchEvent(new HashChangeEvent('hashchange')) })]),
     h('h2', { class: 'sekcja__tytul', tekst: 'Rangi' }),
     h('ol', { class: 'rangi' }, RANGI.map((r, i) => h('li', { 'data-osiagnieta': String(stan.xp >= PROGI[i]) }, [h('strong', { tekst: `${i + 1}. ${r}` }), ` · od ${PROGI[i]} XP`]))),
   ]);
@@ -88,7 +91,8 @@ export function ekranRodzica() {
           reset.textContent = 'Na pewno? Stuknij jeszcze raz, żeby usunąć postępy';
           return;
         }
-        K.stan = nowyStan();
+        // Imię zostaje, znikają tylko postępy.
+        K.stan = { ...nowyStan(), imie: stan.imie };
         zapisz();
         location.hash = '#/';
       },
@@ -111,6 +115,8 @@ export function ekranRodzica() {
       ]),
       h('div', { class: 'karta rodzic__ustawienia' }, [
         h('h2', { class: 'karta__tytul', tekst: 'Ustawienia' }),
+        h('p', { class: 'etykieta', tekst: `Imię gracza: ${stan.imie || '(jeszcze nie podano)'}` }),
+        formularzImienia({ przycisk: 'Zmień imię', poZapisie: rysuj }),
         przelacznik(stan.ustawienia.dzwiek, 'Dźwięki i wibracje', (v) => ustawDzwiek(v)),
         przelacznik(stan.ustawienia.odblokujWszystko, 'Odblokuj wszystkie światy i bossów (np. powtórka tylko jednego tematu)', (v) => {
           stan.ustawienia.odblokujWszystko = v;

@@ -86,3 +86,17 @@ test('odczyt stanu uzupełnia braki i odrzuca zły format', () => {
   assert.throws(() => odczytajStan([]));
   assert.throws(() => odczytajStan(null));
 });
+
+test('imię gracza: normalizacja, limit 20 znaków, stary zapis bez imienia', async () => {
+  const { normalizujImie } = await import('../docs/js/core/stan.js');
+  assert.equal(normalizujImie('  Ola  '), 'Ola');
+  assert.equal(normalizujImie('Anna   Maria'), 'Anna Maria');
+  assert.equal(normalizujImie('\u0000Kuba\u200b'), 'Kuba');
+  assert.equal(normalizujImie('Zbigniew-Bartłomiej-Konstanty'), 'Zbigniew-Bartłomiej-');
+  assert.equal(Array.from(normalizujImie('🦊'.repeat(30))).length, 20);
+  assert.equal(normalizujImie('   '), '');
+  assert.equal(normalizujImie(42), '');
+  assert.equal(nowyStan().imie, '');
+  assert.equal(odczytajStan({ xp: 10 }).imie, '', 'stary zapis bez imienia → pytamy o imię');
+  assert.equal(odczytajStan({ imie: ' Zosia ' }).imie, 'Zosia');
+});

@@ -2,7 +2,7 @@
 // WERSJA i PLIKI uzupełnia narzędzie: node tools/wersja.js (nie edytować ręcznie).
 // Każda zmiana w docs/ zmienia WERSJA, więc przeglądarka pobiera nową wersję gry.
 
-const WERSJA = '05330542690a';
+const WERSJA = 'abbe4b2261d7';
 const PLIKI = [
   './',
   'assets/fonts/OFL-lexend.txt',
@@ -44,6 +44,7 @@ const PLIKI = [
   'js/core/zadania-logika.js',
   'js/ekrany/arena.js',
   'js/ekrany/boss.js',
+  'js/ekrany/imie.js',
   'js/ekrany/mapa.js',
   'js/ekrany/misja.js',
   'js/ekrany/powtorka.js',

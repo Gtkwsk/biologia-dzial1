@@ -2,7 +2,7 @@
 
 import { h } from '../core/dom.js';
 import { bossOdblokowany, misjeUkonczone, swiatOdblokowany } from '../core/gra.js';
-import { K, infoGracza } from '../kontekst.js';
+import { K, imieGracza, infoGracza } from '../kontekst.js';
 import SWIATY from '../../data/swiaty.js';
 import { gwiazdki, kafel, pasekPostepu } from './wspolne.js';
 
@@ -63,7 +63,7 @@ export function ekranMapy() {
     h('div', { class: 'baner' }, [
       h('div', { class: 'baner__teksty' }, [
         h('p', { class: 'nadtytul', tekst: 'Biologia · klasa 5 · Dział I „Biologia – nauka o życiu”' }),
-        h('h1', { class: 'tytul tytul--duzy', tabindex: '-1' }, ['Cześć, Mikołaj! ', h('span', { class: 'tytul__akcent', tekst: 'Gotowy na misję?' })]),
+        h('h1', { class: 'tytul tytul--duzy', tabindex: '-1' }, [`Cześć, ${imieGracza({ wolacz: true })}! `, h('span', { class: 'tytul__akcent', tekst: 'Czas na misję!' })]),
         h('p', { class: 'baner__opis', tekst: `Poziom ${g.poziom} · ${g.ranga}. Przejdź trzy światy, pokonaj bossów i zdaj próbny sprawdzian.` }),
         h('a', { href: krok.href, class: 'przycisk przycisk--glowny przycisk--duzy' }, [h('span', { tekst: '▶ ' }), krok.tekst]),
         h('p', { class: 'baner__podpis', tekst: krok.opis }),

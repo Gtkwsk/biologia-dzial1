@@ -92,6 +92,11 @@ export function reakcjaNaOdpowiedz(wynikGry, dobrze, el) {
   poNagrodzie(wynikGry);
 }
 
+// Imię do wyświetlania. Bez imienia: neutralne „Gracz” (w powitaniu „Graczu”).
+export function imieGracza({ wolacz = false } = {}) {
+  return K.stan?.imie || (wolacz ? 'Graczu' : 'Gracz');
+}
+
 export function infoGracza() {
   const p = poziom(K.stan.xp);
   return { ...p, seria: seriaDni(K.stan.dni, dzisiaj()) };

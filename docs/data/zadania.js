@@ -684,7 +684,7 @@ export default [
   },
   {
     id: 't3-pow-wybor', temat: 3, typ: 'wybor', umiejetnosc: 'powiekszenie',
-    tresc: 'Okular powiększa 10 razy, a obiektyw 40 razy. Mikołaj policzył 10 + 40 = 50. Jakie jest prawidłowe powiększenie?',
+    tresc: 'Okular powiększa 10 razy, a obiektyw 40 razy. Ktoś z klasy policzył 10 + 40 = 50. Jakie jest prawidłowe powiększenie?',
     opcje: ['400 razy', '50 razy', '4 razy', '30 razy'],
     poprawna: 0,
     wyjasnienie: 'Powiększenia mnożymy: 10 × 40 = 400. Dodawanie to najczęstsza pułapka na sprawdzianie.',

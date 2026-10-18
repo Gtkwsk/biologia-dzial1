@@ -81,7 +81,7 @@ export function ekranBossa({ swiat: nr, hardcore = false }) {
           tekst: wygrana
             ? nr < 3
               ? hardcore
-                ? 'Wygrana w trybie hardcore. Prawdziwy mistrz!'
+                ? 'Wygrana w trybie hardcore. Mistrzowski wynik!'
                 : `Brama do świata ${nr + 1} jest otwarta.`
               : 'Wszystkie światy zaliczone. Czas na próbny sprawdzian!'
             : 'Przeczytaj wyjaśnienia, powtórz misje i spróbuj ponownie. Zadania zostaną wylosowane od nowa.',

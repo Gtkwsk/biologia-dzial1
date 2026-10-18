@@ -4,7 +4,8 @@ import { h, ikona, wyczysc } from './core/dom.js';
 import { ustawDzwieki } from './core/dzwieki.js';
 import { utworzMagazyn } from './core/magazyn.js';
 import { adres, parsujAdres } from './core/router.js';
-import { K, infoGracza, ustawDzwiek, powiadom } from './kontekst.js';
+import { K, imieGracza, infoGracza, ustawDzwiek, powiadom } from './kontekst.js';
+import { ekranImienia } from './ekrany/imie.js';
 import { zarejestrujServiceWorker } from './pwa.js';
 import { ekranMapy } from './ekrany/mapa.js';
 import { ekranSwiata } from './ekrany/swiat.js';
@@ -45,7 +46,7 @@ function hud() {
     logo,
     h('a', { href: '#/profil', class: 'hud__gracz', 'aria-label': `Poziom ${g.poziom}, ${g.ranga}. Profil gracza.` }, [
       h('span', { class: 'hud__poziom', tekst: String(g.poziom) }),
-      h('span', { class: 'hud__opis' }, [h('span', { class: 'hud__ranga', tekst: g.ranga }), pasek, h('span', { class: 'hud__xp', tekst: g.max ? `${K.stan.xp} XP · MAX` : `${K.stan.xp} / ${g.do} XP` })]),
+      h('span', { class: 'hud__opis' }, [h('span', { class: 'hud__ranga', tekst: `${imieGracza()} · ${g.ranga}` }), pasek, h('span', { class: 'hud__xp', tekst: g.max ? `${K.stan.xp} XP · MAX` : `${K.stan.xp} / ${g.do} XP` })]),
     ]),
     h('div', { class: 'hud__liczniki' }, [
       h('span', { class: 'hud__licznik hud__licznik--combo', 'data-aktywne': String(combo >= 3), title: 'Combo: dobre odpowiedzi z rzędu', tekst: `🔥 ${combo}` }),
@@ -94,7 +95,10 @@ function pokaz() {
   document.querySelectorAll('.okno-tlo').forEach((o) => o.remove());
   let wynik;
   try {
-    wynik = (EKRANY[cel.ekran] ?? ekranNieznany)(cel);
+    // Pierwsze uruchomienie (albo stary zapis bez imienia): najpierw pytamy o imię.
+    // Panel rodzica zostaje dostępny zawsze.
+    if (!K.stan.imie && cel.ekran !== 'rodzic') wynik = ekranImienia({ poZapisie: pokaz });
+    else wynik = (EKRANY[cel.ekran] ?? ekranNieznany)(cel);
   } catch (blad) {
     console.error(blad);
     wynik = ekranNieznany();
@@ -103,7 +107,7 @@ function pokaz() {
     glowny.append(wynik.el);
     sprzataj = wynik.sprzataj ?? null;
   } else glowny.append(wynik);
-  document.body.dataset.ekran = cel.ekran;
+  document.body.dataset.ekran = !K.stan.imie && cel.ekran !== 'rodzic' ? 'imie' : cel.ekran;
   hud();
   scrollTo(0, 0);
   glowny.querySelector('h1')?.focus?.({ preventScroll: true });

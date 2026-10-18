@@ -5,6 +5,7 @@ export const WERSJA_STANU = 1;
 export function nowyStan() {
   return {
     wersja: WERSJA_STANU,
+    imie: '', // imię gracza (pytamy przy pierwszym uruchomieniu)
     xp: 0,
     combo: 0,
     maxCombo: 0,
@@ -34,6 +35,7 @@ function obiekt(v) {
 export function odczytajStan(dane) {
   if (!dane || typeof dane !== 'object' || Array.isArray(dane)) throw new Error('zły format');
   const s = nowyStan();
+  s.imie = normalizujImie(dane.imie);
   s.xp = liczba(dane.xp);
   s.combo = 0; // combo nie przechodzi między sesjami
   s.maxCombo = liczba(dane.maxCombo);
@@ -49,6 +51,22 @@ export function odczytajStan(dane) {
   s.powiekszenia = { ...s.powiekszenia, ...obiekt(dane.powiekszenia) };
   s.ustawienia = { ...s.ustawienia, ...obiekt(dane.ustawienia) };
   return s;
+}
+
+export const MAKS_IMIE = 20;
+
+// Imię gracza: bez znaków sterujących i nadmiarowych spacji, najwyżej 20 znaków.
+export function normalizujImie(tekst) {
+  if (typeof tekst !== 'string') return '';
+  return Array.from(
+    tekst
+      .replace(/[\u0000-\u001f\u007f-\u009f\u200b-\u200f\u2028-\u202e]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim(),
+  )
+    .slice(0, MAKS_IMIE)
+    .join('')
+    .trim();
 }
 
 export function dzisiaj(data = new Date()) {
