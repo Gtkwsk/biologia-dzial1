@@ -443,6 +443,26 @@ main {
   text-align: center;
 }
 
+.nota-niezaleznosci {
+  max-width: 40rem;
+  margin: 0.75rem auto 0;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(34, 211, 238, 0.22);
+  border-radius: var(--promien-maly);
+  background: rgba(22, 27, 51, 0.6);
+  box-shadow: 0 0 14px rgba(34, 211, 238, 0.08);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--tekst-2);
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.nota-niezaleznosci::before {
+  content: 'ⓘ ';
+  color: var(--cyjan);
+}
+
 /* ---------- Powiadomienia, okna ---------- */
 
 .powiadomienia {
@@ -609,4 +629,8 @@ main {
 .przelacznik[aria-checked='true'] .przelacznik__galka::after {
   background: var(--cyjan);
   transform: translateX(1.4rem);
+}
+
+.ekran--profil .nota-niezaleznosci {
+  margin-top: 2rem;
 }

@@ -1,10 +1,11 @@
 # Test całej gry w przeglądarce (headless Chrome): przejście wszystkich misji, bossów,
 # sprawdzianu i trybów powtórki, z kontrolą błędów konsoli i CSP. Zrzuty ekranu w zrzuty/.
 #   node tools/serwer.js 8080 &   python tools/e2e.py
-import json, pathlib, re, sys
+import json, os, pathlib, re, sys
 from playwright.sync_api import sync_playwright
 
-URL = 'http://localhost:8080/'
+URL = os.environ.get('E2E_URL', 'http://localhost:8080/')
+NOTA = 'Niezależna pomoc do nauki zgodna z podstawą programową biologii dla klasy 5 (2024). Nie jest produktem ani materiałem wydawnictwa.'
 ZRZUTY = pathlib.Path(__file__).resolve().parent.parent / 'zrzuty'
 ZRZUTY.mkdir(exist_ok=True)
 bledy = []
@@ -97,6 +98,7 @@ with sync_playwright() as p:
     SW = page.evaluate("import('./data/swiaty.js').then(m => m.default)")
     page.wait_for_timeout(600)
     page.screenshot(path=str(ZRZUTY / '01-baza.png'), full_page=True)
+    assert page.locator('.ekran--mapa .nota-niezaleznosci, .nota-niezaleznosci').first.inner_text().strip() == NOTA, 'nota na mapie'
 
     # świat 2 zablokowany na starcie
     assert page.locator('.swiat-karta--2.swiat-karta--zablokowana').count() == 1
@@ -206,6 +208,7 @@ with sync_playwright() as p:
     page.goto(f"{URL}#/sciaga"); page.wait_for_selector('.sciaga')
     page.goto(f"{URL}#/profil"); page.wait_for_selector('.odznaki'); page.wait_for_timeout(300)
     page.screenshot(path=str(ZRZUTY / '14-profil.png'), full_page=True)
+    assert page.locator('.ekran--profil .nota-niezaleznosci').inner_text().strip() == NOTA, 'nota w profilu'
     page.goto(f"{URL}#/rodzic"); page.wait_for_selector('.rodzic__ustawienia')
     page.locator('.rodzic__ustawienia .imie__pole').fill('Kuba')
     page.locator('.rodzic__ustawienia .imie__formularz button').click()
@@ -233,6 +236,9 @@ with sync_playwright() as p:
     tp.locator('.imie__pole').fill('Zosia'); tp.locator('.imie-ekran .przycisk--glowny').click()
     tp.wait_for_selector('.swiat-karta'); tp.wait_for_timeout(600)
     tp.screenshot(path=str(ZRZUTY / '15-telefon-baza.png'))
+    tn = tp.locator('.nota-niezaleznosci'); tn.scroll_into_view_if_needed(); tp.wait_for_timeout(200)
+    bb = tn.bounding_box(); assert bb and bb['x'] >= 0 and bb['x'] + bb['width'] <= 390, f'nota mieści się na telefonie: {bb}'
+    tp.screenshot(path=str(ZRZUTY / '17-telefon-stopka.png'))
     tp.goto(f"{URL}#/swiat/1/misja/m1-czynnosci"); tp.wait_for_selector('section.zadanie'); tp.wait_for_timeout(400)
     tp.screenshot(path=str(ZRZUTY / '16-telefon-zadanie.png'), full_page=True)
     b.close()

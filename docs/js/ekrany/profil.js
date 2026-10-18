@@ -11,7 +11,7 @@ import ZADANIA from '../../data/zadania.js';
 import { SKALA } from '../../data/sprawdzian.js';
 import { WERSJA } from '../wersja.js';
 import { gotowosc } from './mapa.js';
-import { naglowek, pasekPostepu } from './wspolne.js';
+import { naglowek, notaNiezaleznosci, pasekPostepu } from './wspolne.js';
 
 function statystyka(wartosc, opis) {
   return h('div', { class: 'stat' }, [h('span', { class: 'stat__wartosc', tekst: String(wartosc) }), h('span', { class: 'stat__opis', tekst: opis })]);
@@ -72,6 +72,7 @@ export function ekranProfilu() {
     h('div', { class: 'karta' }, [formularzImienia({ przycisk: 'Zapisz imię', poZapisie: () => dispatchEvent(new HashChangeEvent('hashchange')) })]),
     h('h2', { class: 'sekcja__tytul', tekst: 'Rangi' }),
     h('ol', { class: 'rangi' }, RANGI.map((r, i) => h('li', { 'data-osiagnieta': String(stan.xp >= PROGI[i]) }, [h('strong', { tekst: `${i + 1}. ${r}` }), ` · od ${PROGI[i]} XP`]))),
+    notaNiezaleznosci(),
   ]);
 }
 

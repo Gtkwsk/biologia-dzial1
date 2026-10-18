@@ -4,7 +4,7 @@ import { h } from '../core/dom.js';
 import { bossOdblokowany, misjeUkonczone, swiatOdblokowany } from '../core/gra.js';
 import { K, imieGracza, infoGracza } from '../kontekst.js';
 import SWIATY from '../../data/swiaty.js';
-import { gwiazdki, kafel, pasekPostepu } from './wspolne.js';
+import { gwiazdki, kafel, notaNiezaleznosci, pasekPostepu } from './wspolne.js';
 
 export function gotowosc(stan) {
   const misje = SWIATY.flatMap((s) => s.misje);
@@ -83,6 +83,7 @@ export function ekranMapy() {
       kafel({ href: '#/profil', ikona: '🏅', tytul: 'Profil i odznaki', opis: `${Object.keys(stan.odznaki).length} odznak · mocne i słabe strony.`, klasa: 'kafel--profil' }),
     ]),
     h('p', { class: 'stopka', tekst: 'Zadania ułożone na podstawie treści działu I podręcznika „Puls życia 5” (Nowa Era, podstawa programowa 2024). Pytania i rysunki są własne.' }),
+    notaNiezaleznosci(),
   ]);
 }
 

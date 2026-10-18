@@ -1,5 +1,7 @@
 # Puls Arena · Biologia 5 · Dział I
 
+> Niezależna pomoc do nauki zgodna z podstawą programową biologii dla klasy 5 (2024). Nie jest produktem ani materiałem wydawnictwa.
+
 Gra do nauki i powtórki przed sprawdzianem z biologii (klasa 5, podręcznik „Puls życia 5”, Nowa Era,
 edycja zgodna z podstawą programową 2024). Obejmuje dział I „Biologia – nauka o życiu”:
 
