@@ -1,0 +1,12 @@
+{
+  "name": "puls-arena-biologia-5-dzial-1",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Gra do nauki biologii (klasa 5, dział I) – statyczna aplikacja PWA bez zależności.",
+  "scripts": {
+    "start": "node tools/serwer.js 8080",
+    "test": "node --test && node tools/validate-data.js",
+    "wersja": "node tools/wersja.js"
+  }
+}

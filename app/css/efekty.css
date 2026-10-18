@@ -1,0 +1,130 @@
+/* ---------- Efekty nagród: iskry, konfetti (js/core/efekty.js) ---------- */
+
+#efekty {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.iskra {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: var(--rozmiar);
+  height: var(--rozmiar);
+  margin: calc(var(--rozmiar) / -2);
+  background: var(--kolor);
+  border-radius: 50%;
+  animation: iskra 0.75s cubic-bezier(0.15, 0.7, 0.3, 1) forwards;
+}
+
+@keyframes iskra {
+  from {
+    opacity: 1;
+    transform: rotate(var(--kat)) translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: rotate(var(--kat)) translateX(var(--d)) scale(0.15);
+  }
+}
+
+.konfetti {
+  position: absolute;
+  top: -24px;
+  left: var(--x);
+  width: var(--szer);
+  height: calc(var(--szer) * 1.5);
+  background: var(--kolor);
+  border-radius: 2px;
+  opacity: 0;
+  animation: konfetti var(--czas) linear var(--opoznienie) forwards;
+}
+
+@keyframes konfetti {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(var(--dryf), 108vh) rotate(var(--obrot));
+  }
+}
+
+/* ---------- Animacje gry ---------- */
+
+@keyframes wjazd {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes wjazd-bok {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}
+
+@keyframes wyskok {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes puls {
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes lewitacja {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes gwiazdka {
+  from {
+    opacity: 0;
+    transform: scale(0.2) rotate(-90deg);
+  }
+}
+
+@keyframes trafienie {
+  0% { transform: scale(1); filter: drop-shadow(0 0 0 #fff); }
+  20% { transform: scale(0.85) rotate(-8deg); filter: brightness(2.5) drop-shadow(0 0 20px #fff); }
+  50% { transform: scale(1.05) rotate(5deg); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wstrzas {
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(7px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(3px); }
+}
+
+.ekran--wstrzas {
+  animation: wstrzas 0.4s;
+}
+
+.licznik--animuje {
+  color: var(--zloto);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
