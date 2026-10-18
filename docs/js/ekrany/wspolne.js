@@ -41,10 +41,3 @@ export function formatCzas(sekundy) {
   const s = Math.max(0, Math.ceil(sekundy));
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 }
-
-export const NOTA_NIEZALEZNOSCI =
-  'Niezależna pomoc do nauki zgodna z podstawą programową biologii dla klasy 5 (2024). Nie jest produktem ani materiałem wydawnictwa.';
-
-export function notaNiezaleznosci() {
-  return h('p', { class: 'nota-niezaleznosci', role: 'note', tekst: NOTA_NIEZALEZNOSCI });
-}

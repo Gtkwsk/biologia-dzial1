@@ -98,8 +98,8 @@ with sync_playwright() as p:
     SW = page.evaluate("import('./data/swiaty.js').then(m => m.default)")
     page.wait_for_timeout(600)
     page.screenshot(path=str(ZRZUTY / '01-baza.png'), full_page=True)
-    assert page.locator('.ekran--mapa .nota-niezaleznosci, .nota-niezaleznosci').first.inner_text().strip() == NOTA, 'nota na mapie'
-    assert page.locator('.stopka').inner_text().strip() == 'Zadania obejmują dział I biologii dla klasy 5 (podstawa programowa 2024). Pytania i rysunki są własne.', 'stopka mapy'
+    assert page.locator('.stopka, .nota-niezaleznosci').count() == 0, 'brak stopek na mapie'
+    assert NOTA not in page.locator('body').inner_text() and 'Zadania obejmują dział I' not in page.locator('body').inner_text(), 'brak tekstów stopek'
     assert not re.search(r'Nowa Era|Puls życia', page.locator('body').inner_text()), 'brak nazwy wydawnictwa/podręcznika'
 
     # świat 2 zablokowany na starcie
@@ -210,7 +210,7 @@ with sync_playwright() as p:
     page.goto(f"{URL}#/sciaga"); page.wait_for_selector('.sciaga')
     page.goto(f"{URL}#/profil"); page.wait_for_selector('.odznaki'); page.wait_for_timeout(300)
     page.screenshot(path=str(ZRZUTY / '14-profil.png'), full_page=True)
-    assert page.locator('.ekran--profil .nota-niezaleznosci').inner_text().strip() == NOTA, 'nota w profilu'
+    assert page.locator('.ekran--profil .nota-niezaleznosci, .ekran--profil .stopka').count() == 0 and NOTA not in page.locator('.ekran--profil').inner_text(), 'brak stopki w profilu'
     page.goto(f"{URL}#/rodzic"); page.wait_for_selector('.rodzic__ustawienia')
     page.locator('.rodzic__ustawienia .imie__pole').fill('Kuba')
     page.locator('.rodzic__ustawienia .imie__formularz button').click()
@@ -238,9 +238,7 @@ with sync_playwright() as p:
     tp.locator('.imie__pole').fill('Zosia'); tp.locator('.imie-ekran .przycisk--glowny').click()
     tp.wait_for_selector('.swiat-karta'); tp.wait_for_timeout(600)
     tp.screenshot(path=str(ZRZUTY / '15-telefon-baza.png'))
-    tn = tp.locator('.nota-niezaleznosci'); tn.scroll_into_view_if_needed(); tp.wait_for_timeout(200)
-    bb = tn.bounding_box(); assert bb and bb['x'] >= 0 and bb['x'] + bb['width'] <= 390, f'nota mieści się na telefonie: {bb}'
-    tp.screenshot(path=str(ZRZUTY / '17-telefon-stopka.png'))
+    assert tp.locator('.stopka, .nota-niezaleznosci').count() == 0, 'brak stopek na telefonie'
     tp.goto(f"{URL}#/swiat/1/misja/m1-czynnosci"); tp.wait_for_selector('section.zadanie'); tp.wait_for_timeout(400)
     tp.screenshot(path=str(ZRZUTY / '16-telefon-zadanie.png'), full_page=True)
     b.close()
