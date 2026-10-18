@@ -1,6 +1,6 @@
 // Service worker: praca offline po pierwszym uruchomieniu.
 // WERSJA i PLIKI uzupełnia narzędzie: node tools/wersja.js (nie edytować ręcznie).
-// Każda zmiana w app/ zmienia WERSJA, więc przeglądarka pobiera nową wersję gry.
+// Każda zmiana w docs/ zmienia WERSJA, więc przeglądarka pobiera nową wersję gry.
 
 const WERSJA = '05330542690a';
 const PLIKI = [

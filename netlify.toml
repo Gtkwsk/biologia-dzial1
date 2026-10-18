@@ -1,9 +1,9 @@
 # Wdrożenie na Netlify z gałęzi main.
-# Publikowany jest tylko katalog app/. Dokumenty projektu, testy i narzędzia
+# Publikowany jest tylko katalog docs/. Dokumenty projektu, testy i narzędzia
 # zostają poza stroną.
 
 [build]
-  publish = "app"
+  publish = "docs"
   # Wdrożenie zatrzymuje się, jeśli testy albo walidator danych zgłoszą błąd.
   command = "node --test && node tools/validate-data.js"
 

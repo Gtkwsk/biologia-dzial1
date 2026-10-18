@@ -1,10 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { poziom, mnoznikCombo, zapiszOdpowiedz, gwiazdki, seriaDni, zapiszMisje, zapiszBossa, swiatOdblokowany, bossOdblokowany, sprawdzOdznaki, ocenaSzkolna } from '../app/js/core/gra.js';
-import { nowyStan, odczytajStan } from '../app/js/core/stan.js';
-import SWIATY from '../app/data/swiaty.js';
-import ODZNAKI from '../app/data/odznaki.js';
-import { SKALA } from '../app/data/sprawdzian.js';
+import { poziom, mnoznikCombo, zapiszOdpowiedz, gwiazdki, seriaDni, zapiszMisje, zapiszBossa, swiatOdblokowany, bossOdblokowany, sprawdzOdznaki, ocenaSzkolna } from '../docs/js/core/gra.js';
+import { nowyStan, odczytajStan } from '../docs/js/core/stan.js';
+import SWIATY from '../docs/data/swiaty.js';
+import ODZNAKI from '../docs/data/odznaki.js';
+import { SKALA } from '../docs/data/sprawdzian.js';
 
 test('poziomy i rangi', () => {
   assert.equal(poziom(0).poziom, 1);

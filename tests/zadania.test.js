@@ -1,11 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { sprawdz, punkty, przygotuj, kompletna } from '../app/js/core/zadania-logika.js';
-import { zadaniePowiekszenia, zadanieObiektywu, dystraktory } from '../app/js/core/generator.js';
-import { rng, tasujInaczej } from '../app/js/core/losuj.js';
-import { parsujAdres, adres } from '../app/js/core/router.js';
-import ZADANIA from '../app/data/zadania.js';
-import SPRAWDZIAN from '../app/data/sprawdzian.js';
+import { sprawdz, punkty, przygotuj, kompletna } from '../docs/js/core/zadania-logika.js';
+import { zadaniePowiekszenia, zadanieObiektywu, dystraktory } from '../docs/js/core/generator.js';
+import { rng, tasujInaczej } from '../docs/js/core/losuj.js';
+import { parsujAdres, adres } from '../docs/js/core/router.js';
+import ZADANIA from '../docs/data/zadania.js';
+import SPRAWDZIAN from '../docs/data/sprawdzian.js';
 
 // Wzorcowa (poprawna) odpowiedź na każde zadanie.
 function wzorcowa(z) {

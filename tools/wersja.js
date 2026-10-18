@@ -1,5 +1,5 @@
 // Wersja gry i lista plików do pracy offline.
-// Uruchomienie po każdej zmianie w app/:  node tools/wersja.js
+// Uruchomienie po każdej zmianie w docs/:  node tools/wersja.js
 //
 // Wersja to skrót zawartości wszystkich plików gry. Zmiana dowolnego pliku zmienia
 // wersję, a więc i sw.js, dzięki czemu urządzenia pobierają nową wersję gry.
@@ -10,7 +10,7 @@ import { readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
-export const KATALOG_APP = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'app');
+export const KATALOG_APP = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'docs');
 // sw.js nie trafia na własną listę; js/wersja.js jest na liście, ale nie wchodzi do skrótu
 // (zawiera sam skrót).
 const POZA_LISTA = new Set(['sw.js']);

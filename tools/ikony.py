@@ -1,9 +1,9 @@
-# Generuje ikony PNG z app/assets/ikony/ikona.svg (narzędzie deweloperskie, wymaga playwright):
+# Generuje ikony PNG z docs/assets/ikony/ikona.svg (narzędzie deweloperskie, wymaga playwright):
 #   python tools/ikony.py
 import pathlib
 from playwright.sync_api import sync_playwright
 
-KAT = pathlib.Path(__file__).resolve().parent.parent / 'app' / 'assets' / 'ikony'
+KAT = pathlib.Path(__file__).resolve().parent.parent / 'docs' / 'assets' / 'ikony'
 svg = (KAT / 'ikona.svg').read_text()
 with sync_playwright() as p:
     b = p.chromium.launch(executable_path='/usr/bin/google-chrome')

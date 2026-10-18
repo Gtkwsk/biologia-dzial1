@@ -8,7 +8,7 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const KORZEN = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const APP = path.join(KORZEN, 'app');
+const APP = path.join(KORZEN, 'docs');
 
 const TYPY = {
   '.html': 'text/html; charset=utf-8',

@@ -18,15 +18,15 @@ i sercami, próbny sprawdzian, ukryty panel rodzica (przytrzymaj logo 3 s), dźw
 node tools/serwer.js 8080      # potem http://localhost:8080/
 ```
 
-Wystarczy dowolny statyczny serwer dla katalogu `app/` (np. `python3 -m http.server -d app`).
-Przez `file://` moduły ES nie zadziałają. Wdrożenie: katalog `app/` na Netlify (plik `netlify.toml` jest gotowy).
+Wystarczy dowolny statyczny serwer dla katalogu `docs/` (np. `python3 -m http.server -d docs`).
+Przez `file://` moduły ES nie zadziałają. Wdrożenie: GitHub Pages z katalogu `docs/` (poniżej) albo katalog `docs/` na Netlify (plik `netlify.toml` jest gotowy).
 
 ## Testy
 
 ```
 node --test                    # logika gry, sprawdzanie zadań, generator, router, aktualność sw.js
 node tools/validate-data.js    # spójność danych + brak treści spoza podstawy 2024
-node tools/wersja.js           # po każdej zmianie w app/ (wersja + lista plików offline)
+node tools/wersja.js           # po każdej zmianie w docs/ (wersja + lista plików offline)
 python tools/e2e.py            # pełne przejście gry w headless Chrome (playwright), zrzuty w zrzuty/
 ```
 
@@ -35,14 +35,18 @@ python tools/e2e.py            # pełne przejście gry w headless Chrome (playwr
 Wszystkie polecenia, wyjaśnienia, fiszki i rysunki (mikroskop w SVG) są własne. Typy zadań odpowiadają
 typowym sprawdzianom z tego działu (test „Wiesz czy nie wiesz?” z bezpłatnego fragmentu podręcznika,
 publicznie dostępne karty pracy i quizy), ale żaden tekst nie jest z nich kopiowany.
-Fonty Titan One i Lexend: licencja SIL OFL (pliki w app/assets/fonts).
+Fonty Titan One i Lexend: licencja SIL OFL (pliki w docs/assets/fonts).
 
 ## GitHub Pages
 
-Gałąź `gh-pages` zawiera kopię katalogu `app/` (wszystkie ścieżki w grze są względne, więc działa pod
-adresem `/biologia-dzial1/`). Aktualizacja po zmianach:
+Gra jest publikowana przez GitHub Pages bezpośrednio z gałęzi `main`, katalog `/docs`
+(https://gtkwsk.github.io/biologia-dzial1/). Wszystkie ścieżki w grze są względne, więc działa pod
+adresem `/biologia-dzial1/`. Plik `docs/.nojekyll` wyłącza przetwarzanie przez Jekyll.
+Aktualizacja po zmianach:
 
 ```
 node tools/wersja.js && node --test && node tools/validate-data.js
-git subtree split --prefix app -b gh-pages-nowa && git push origin gh-pages-nowa:gh-pages
+git commit -am "…" && git push
 ```
+
+GitHub Pages nie wysyła własnych nagłówków, więc polityka CSP z `netlify.toml` działa tylko na Netlify.

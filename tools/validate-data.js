@@ -2,16 +2,16 @@
 // Sprawdza spójność zadań, światów, sprawdzianu, fiszek i zgodność z podstawą programową 2024
 // (w dziale I nie ma już pierwiastków ani związków chemicznych).
 
-import ZADANIA from '../app/data/zadania.js';
-import SWIATY from '../app/data/swiaty.js';
-import SPRAWDZIAN from '../app/data/sprawdzian.js';
-import FISZKI from '../app/data/fiszki.js';
-import OTWARTE from '../app/data/otwarte.js';
-import ODZNAKI from '../app/data/odznaki.js';
-import ARENA from '../app/data/arena.js';
-import { TYPY } from '../app/js/core/zadania-logika.js';
-import { NAZWY_UMIEJETNOSCI } from '../app/js/core/gra.js';
-import { KOTWICE } from '../app/js/components/mikroskop-kotwice.js';
+import ZADANIA from '../docs/data/zadania.js';
+import SWIATY from '../docs/data/swiaty.js';
+import SPRAWDZIAN from '../docs/data/sprawdzian.js';
+import FISZKI from '../docs/data/fiszki.js';
+import OTWARTE from '../docs/data/otwarte.js';
+import ODZNAKI from '../docs/data/odznaki.js';
+import ARENA from '../docs/data/arena.js';
+import { TYPY } from '../docs/js/core/zadania-logika.js';
+import { NAZWY_UMIEJETNOSCI } from '../docs/js/core/gra.js';
+import { KOTWICE } from '../docs/js/components/mikroskop-kotwice.js';
 
 const bledy = [];
 const blad = (t) => bledy.push(t);
